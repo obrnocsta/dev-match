@@ -1,0 +1,1 @@
+http DELETE http://localhost:3000/profiles/3
