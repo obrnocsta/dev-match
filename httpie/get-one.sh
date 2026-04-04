@@ -1,1 +1,0 @@
-http GET http://localhost:3000/profiles/1

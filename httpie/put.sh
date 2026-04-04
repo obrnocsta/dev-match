@@ -1,1 +1,0 @@
-http PUT http://localhost:3000/profiles/2 --raw '{"name": "bruno", "description": "Java developer who loves robust architectures, elegant patterns, and code that stands the test of time. My mornings involve tea, JVM tuning reads, and a firm stance on readable, maintainable code over clever hacks. Give me a solid Spring setup and I’m happy—shall we engineer something resilient?"}'
