@@ -10,11 +10,13 @@ import {
   HttpStatus,
   NotFoundException,
   ParseUUIDPipe,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { ProfilesService } from './profiles.service';
 import type { UUID } from 'node:crypto';
+import { ProfilesGuard } from './profiles.guard';
 
 @Controller('profiles')
 export class ProfilesController {
@@ -57,6 +59,7 @@ export class ProfilesController {
 
   // DELETE /profiles/:id
   @Delete(':id')
+  @UseGuards(ProfilesGuard)
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id', ParseUUIDPipe) id: UUID) {
     try {
