@@ -86,15 +86,12 @@ export class ProfilesService {
   }
 
   update(id: string, updateProfileDto: UpdateProfileDto) {
-    const indexProfile = this.profiles.findIndex(
-      (profile) => profile.id === id,
-    );
-    if (indexProfile > -1) {
-      this.profiles[indexProfile] = {
-        id,
-        ...updateProfileDto,
-      };
+    const profile = this.profiles.find((profile) => profile.id === id);
+    if (!profile) {
+      return {};
     }
-    return this.profiles[indexProfile];
+    profile.name = updateProfileDto.name;
+    profile.description = updateProfileDto.description;
+    return profile;
   }
 }
