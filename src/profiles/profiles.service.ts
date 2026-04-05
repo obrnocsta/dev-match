@@ -1,15 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { randomUUID } from 'node:crypto';
 import { CreateProfileDto } from './dto/create-profile.dto';
+import { UpdateProfileDto } from './dto/update-profile.dto';
+import { profile } from 'node:console';
 
 @Injectable()
 export class ProfilesService {
   private profiles = [
     {
       id: '09263fdd-f702-4075-9df6-e4bf5642509e',
-      name: 'Jessica',
+      name: 'Kai',
       description:
-        'Java developer who loves robust architectures, elegant patterns, and code that stands the test of time. My mornings involve tea, JVM tuning reads, and a firm stance on readable, maintainable code over clever hacks. Give me a solid Spring setup and I’m happy—shall we engineer something resilient?',
+        "This JavaScript coder is a master of syntax, a weaver of the web, and a connoisseur of coffee. In the morning, I like to make a wheatgrass juice and set aside an hour to read up on the latest JS releases before starting my day. There's just something electric about a fresh npm install, you know? Want to contribute to a new universe together?",
     },
     {
       id: 'a39950ae-2e14-4500-8ab6-1a6c86f786d0',
@@ -81,5 +83,18 @@ export class ProfilesService {
     };
     this.profiles.push(createProfile);
     return createProfile;
+  }
+
+  update(id: string, updateProfileDto: UpdateProfileDto) {
+    const indexProfile = this.profiles.findIndex(
+      (profile) => profile.id === id,
+    );
+    if (indexProfile > -1) {
+      this.profiles[indexProfile] = {
+        id,
+        ...updateProfileDto,
+      };
+    }
+    return this.profiles[indexProfile];
   }
 }
