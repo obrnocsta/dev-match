@@ -8,6 +8,7 @@ import {
   Put,
   HttpCode,
   HttpStatus,
+  NotFoundException,
 } from '@nestjs/common';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
@@ -26,7 +27,11 @@ export class ProfilesController {
   // GET /profiles/:id
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.profilesService.findOne(id);
+    try {
+      return this.profilesService.findOne(id);
+    } catch (error) {
+      throw new NotFoundException(error);
+    }
   }
 
   // POST /profiles
@@ -38,13 +43,21 @@ export class ProfilesController {
   // PUT /profiles/:id
   @Put(':id')
   update(@Param('id') id: string, @Body() updateProfileDto: UpdateProfileDto) {
-    return this.profilesService.update(id, updateProfileDto);
+    try {
+      return this.profilesService.update(id, updateProfileDto);
+    } catch (error) {
+      throw new NotFoundException(error);
+    }
   }
 
   // DELETE /profiles/:id
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id: string) {
-    this.profilesService.delete(id);
+    try {
+      this.profilesService.delete(id);
+    } catch (error) {
+      throw new NotFoundException(error);
+    }
   }
 }
