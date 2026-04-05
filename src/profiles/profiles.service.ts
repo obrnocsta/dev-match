@@ -1,20 +1,20 @@
 import { Injectable } from '@nestjs/common';
-// import { randomUUID } from 'node:crypto';
+import { randomUUID } from 'node:crypto';
+import { CreateProfileDto } from './dto/create-profile.dto';
 
 @Injectable()
 export class ProfilesService {
   private profiles = [
     {
-      id: 'f3e87f85-6238-417f-870c-530f9695fd8b',
-      name: 'Bruno',
-      description:
-        'Node.js developer who thrives on async flows, event loops, and late-night debugging sessions. I start the day with strong coffee, skim changelogs, and have strong opinions about package bloat and clean APIs. Nothing beats shipping a fast server and watching logs stay quiet—care to build something scalable together?',
-    },
-    {
       id: '09263fdd-f702-4075-9df6-e4bf5642509e',
       name: 'Jessica',
       description:
         'Java developer who loves robust architectures, elegant patterns, and code that stands the test of time. My mornings involve tea, JVM tuning reads, and a firm stance on readable, maintainable code over clever hacks. Give me a solid Spring setup and I’m happy—shall we engineer something resilient?',
+    },
+    {
+      id: 'a39950ae-2e14-4500-8ab6-1a6c86f786d0',
+      name: 'Brianna Watts',
+      description: `Looking for someone to merge with my heart. I’m a full-stack romantic who refactors my feelings until they pass all tests. Bonus points if you can debug my issues while we pair program over coffee. Let’s commit to something beautiful together.`,
     },
     {
       id: '21617c03-de24-463d-89c4-29fd90a22773',
@@ -72,5 +72,14 @@ export class ProfilesService {
 
   findOne(id: string) {
     return this.profiles.find((profile) => profile.id === id);
+  }
+
+  create(createProfileDto: CreateProfileDto) {
+    const createProfile = {
+      id: randomUUID(),
+      ...createProfileDto,
+    };
+    this.profiles.push(createProfile);
+    return createProfile;
   }
 }
