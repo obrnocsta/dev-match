@@ -1,8 +1,8 @@
 # @Get /profiles findAll()
-http GET http://localhost:3000/profiles
+# http GET http://localhost:3000/profiles
 
 # @Get /profiles/:id findOne()
-# http GET http://localhost:3000/profiles/1
+http GET http://localhost:3000/profiles/f3e87f85-6238-417f-870c-530f9695fd8b
 
 # @Post /profiles create()
 # http POST http://localhost:3000/profiles --raw '{"name": "Bruno", "description": "Node.js developer who thrives on async flows, event loops, and late-night debugging sessions. I start the day with strong coffee, skim changelogs, and have strong opinions about package bloat and clean APIs. Nothing beats shipping a fast server and watching logs stay quiet—care to build something scalable together?"}'
