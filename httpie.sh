@@ -1,5 +1,5 @@
 # @Get /profiles findAll()
-# http GET http://localhost:3000/profiles location==brasil
+http GET http://localhost:3000/profiles
 
 # @Get /profiles/:id findOne()
 # http GET http://localhost:3000/profiles/1
@@ -11,4 +11,4 @@
 # http PUT http://localhost:3000/profiles/2 --raw '{"name": "Jessica", "description": "Java developer who loves robust architectures, elegant patterns, and code that stands the test of time. My mornings involve tea, JVM tuning reads, and a firm stance on readable, maintainable code over clever hacks. Give me a solid Spring setup and I’m happy—shall we engineer something resilient?"}'
 
 # @Delete /profiles/:id remove()
-http DELETE http://localhost:3000/profiles/3
+# http DELETE http://localhost:3000/profiles/3
