@@ -94,4 +94,13 @@ export class ProfilesService {
     profile.description = updateProfileDto.description;
     return profile;
   }
+
+  delete(id: string): void {
+    const indexProfile = this.profiles.findIndex(
+      (profile) => profile.id === id,
+    );
+    if (indexProfile > -1) {
+      this.profiles.splice(indexProfile, 1);
+    }
+  }
 }
